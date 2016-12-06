@@ -15,16 +15,18 @@
 
 class Carrier {
 private:
+  std::string name;
   std::vector<Aircraft*> aircrafts;
   unsigned int storedAmmo;
   unsigned int healthPoint;
 
 public:
-  Carrier(unsigned int ammo, unsigned int health);
+  Carrier(std::string name, unsigned int ammo, unsigned int health);
   void addAircraft(std::string type) throw(const char*);
   void fillAll() throw(const char*);
   bool isThereAmmoLeft();
   void fight(Carrier&);
+  void suffersDamage(unsigned int);
   std::string getStatus();
   ~Carrier();
 };

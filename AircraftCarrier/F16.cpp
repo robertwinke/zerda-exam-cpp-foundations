@@ -11,4 +11,5 @@ F16::F16(): Aircraft() {
   this->type = "F16";
   this->maxAmmo = 8;
   this->baseDamage = 30;
+  this->allDamage = maxAmmo * baseDamage;
 }

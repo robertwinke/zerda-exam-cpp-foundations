@@ -12,6 +12,7 @@ F35::F35(): Aircraft() {
   this->type = "F35";
   this->maxAmmo = 12;
   this->baseDamage = 50;
+  this->allDamage = maxAmmo * baseDamage;
 }
 
 

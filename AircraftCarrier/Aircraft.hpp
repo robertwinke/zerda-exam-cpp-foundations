@@ -13,12 +13,13 @@
 class Aircraft {
 protected:
   std::string type;
-  unsigned int ammo, maxAmmo, baseDamage;
+  unsigned int ammo, maxAmmo, baseDamage, allDamage;
 public:
   Aircraft();
   int fight();
   void refill(unsigned int& availableAmmo);
   std::string getType();
+  unsigned int getAllDamage();
   std::string getStatus();
   virtual ~Aircraft();
 };

@@ -9,35 +9,33 @@
 #include <iostream>
 #include "Carrier.hpp"
 
-#include "Aircraft.hpp"
-#include "F16.hpp"
-#include "F35.hpp"
-
 using namespace std;
 
 int main() {
 
-  Carrier c(100,100);
+  Carrier e("Enterprise",10000,10000);
 
   try {
-    c.addAircraft("F16");
+    e.addAircraft("F16");
+    e.addAircraft("F35");
   }
   catch(const char* err) {
     cout << err;
   }
 
+  e.fillAll();
+  e.fillAll();
+
+  cout << e.getStatus() << endl;
 
 
-//  int availableAmmo = 55;
-//  F35 p;
-//
-//
-//
-//  p.refill(availableAmmo);
-//  cout << p.fight() << endl;
-//  cout << p.getType() << endl;
-//  cout << p.getStatus() << endl;
 
-//make variables constant!!!
+  Carrier n("Nimitz", 1000, 2000);
+  n.addAircraft("F16");
+  n.fillAll();
+  cout << n.getStatus() << endl;
+
+  e.fight(n);
+  cout << n.getStatus() << endl;
 	return 0;
 }
