@@ -29,19 +29,25 @@ void Carrier::addAircraft(std::string type) throw(const char*) {
 }
 void Carrier::fillAll() throw (const char*){
   if (isThereAmmoLeft()) {
-    for (unsigned int i  = 0; i < aircrafts.size(); i++) {
-      if (aircrafts[i]->getType() == "F35") {
-        aircrafts[i]->refill(storedAmmo);
-      }
-    }
-    for (unsigned int i  = 0; i < aircrafts.size(); i++) {
-      if (aircrafts[i]->getType() == "F16") {
-        aircrafts[i]->refill(storedAmmo);
-      }
-    }
+    fillAllF35();
+    fillAllF16();
   }
   else {
     throw "there is no ammo left";
+  }
+}
+void Carrier::fillAllF35() {
+  for (unsigned int i  = 0; i < aircrafts.size(); i++) {
+    if (aircrafts[i]->getType() == "F35") {
+      aircrafts[i]->refill(storedAmmo);
+    }
+  }
+}
+void Carrier::fillAllF16() {
+  for (unsigned int i  = 0; i < aircrafts.size(); i++) {
+    if (aircrafts[i]->getType() == "F16") {
+      aircrafts[i]->refill(storedAmmo);
+    }
   }
 }
 void Carrier::fight(Carrier& enemy) {
@@ -54,14 +60,10 @@ std::string Carrier::getStatus() {
     return "It's dead Jim :(";
   }
   else {
-    std::string status = name + "\n";
-    int totalDamage = 0;
-    for (unsigned int i = 0; i < aircrafts.size(); i++) {
-      totalDamage += aircrafts[i]->getAllDamage();
-    }
-    status += "Aircraft count: " + toString(aircrafts.size()) + ", Ammo storage: "
-    + toString(storedAmmo) + ", Total damage: " + toString(totalDamage) + ", Health: " + toString(healthPoint) + "\n";
-    status += "Aircrafts: \n";
+    std::string status = name + "\n" + "Aircraft count: " + toString(aircrafts.size())
+    + ", Ammo storage: " + toString(storedAmmo) + ", Total damage: "
+    + toString(destroyingPower()) + ", Health: " + toString(healthPoint) + "\n" + "Aircrafts: \n";
+
     for (unsigned int i = 0; i < aircrafts.size(); i++) {
       status += aircrafts[i]->getStatus();
     }
@@ -70,6 +72,13 @@ std::string Carrier::getStatus() {
 }
 bool Carrier::isThereAmmoLeft() {
   return storedAmmo != 0;
+}
+int Carrier::destroyingPower() {
+  int totalDamage = 0;
+  for (unsigned int i = 0; i < aircrafts.size(); i++) {
+    totalDamage += aircrafts[i]->getAllDamage();
+  }
+  return totalDamage;
 }
 void Carrier::suffersDamage(unsigned int damage) {
   if (damage >= healthPoint) {

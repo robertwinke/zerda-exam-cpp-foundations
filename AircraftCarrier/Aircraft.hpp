@@ -21,7 +21,7 @@ public:
   std::string getType();
   unsigned int getAllDamage();
   std::string getStatus();
-  virtual ~Aircraft();
+  ~Aircraft();
 };
 
 

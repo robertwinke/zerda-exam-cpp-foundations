@@ -22,10 +22,10 @@ int Aircraft::fight() {
   return damage;
 }
 void Aircraft::refill(unsigned int& availableAmmo) {
-  int fuelNeeded = maxAmmo - ammo;
-  if (availableAmmo > maxAmmo ) {
-    ammo += fuelNeeded;
-    availableAmmo -= fuelNeeded;
+  unsigned int ammoNeeded = maxAmmo - ammo;
+  if (availableAmmo >= ammoNeeded) {
+    ammo += ammoNeeded;
+    availableAmmo -= ammoNeeded;
   }
   else {
     ammo += availableAmmo;
@@ -36,9 +36,7 @@ std::string Aircraft::getType() {
   return type;
 }
 std::string Aircraft::getStatus() {
-  return "Type: " +  type + ", Ammo: " + toString(ammo) +
-  ", Base Damage: " + toString(baseDamage) + ", All Damage: " + toString(allDamage) + "\n";
-
+  return "Type: " +  type + ", Ammo: " + toString(ammo) + ", Base Damage: " + toString(baseDamage) + ", All Damage: " + toString(allDamage) + "\n";
 }
 unsigned int Aircraft::getAllDamage() {
   return allDamage;

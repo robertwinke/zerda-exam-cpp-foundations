@@ -19,12 +19,15 @@ private:
   std::vector<Aircraft*> aircrafts;
   unsigned int storedAmmo;
   unsigned int healthPoint;
+  bool isThereAmmoLeft();
+  int destroyingPower();
+  void fillAllF35();
+  void fillAllF16();
 
 public:
   Carrier(std::string name, unsigned int ammo, unsigned int health);
   void addAircraft(std::string type) throw(const char*);
   void fillAll() throw(const char*);
-  bool isThereAmmoLeft();
   void fight(Carrier&);
   void suffersDamage(unsigned int);
   std::string getStatus();

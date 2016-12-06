@@ -13,7 +13,6 @@
 class F16: public Aircraft {
 public:
   F16();
-
 };
 
 
