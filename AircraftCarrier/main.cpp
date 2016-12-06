@@ -7,6 +7,8 @@
 //============================================================================
 
 #include <iostream>
+#include "Carrier.hpp"
+
 #include "Aircraft.hpp"
 #include "F16.hpp"
 #include "F35.hpp"
@@ -14,15 +16,27 @@
 using namespace std;
 
 int main() {
-  int availableAmmo = 55;
-  F35 p;
+
+  Carrier c(100,100);
+
+  try {
+    c.addAircraft("F16");
+  }
+  catch(const char* err) {
+    cout << err;
+  }
 
 
 
-  p.refill(availableAmmo);
-  cout << p.fight() << endl;
-  cout << p.getType() << endl;
-  cout << p.getStatus() << endl;
+//  int availableAmmo = 55;
+//  F35 p;
+//
+//
+//
+//  p.refill(availableAmmo);
+//  cout << p.fight() << endl;
+//  cout << p.getType() << endl;
+//  cout << p.getStatus() << endl;
 
 //make variables constant!!!
 	return 0;

@@ -21,9 +21,15 @@ int Aircraft::fight() {
   ammo = 0;
   return damage;
 }
-void Aircraft::refill(int& availableAmmo) {
-  ammo = maxAmmo;
-  availableAmmo -= maxAmmo;
+void Aircraft::refill(unsigned int& availableAmmo) {
+  if (availableAmmo > maxAmmo) {
+    ammo = maxAmmo;
+    availableAmmo -= maxAmmo;
+  }
+  else {
+    ammo = availableAmmo;
+    availableAmmo = 0;
+  }
 }
 std::string Aircraft::getType() {
   return type;

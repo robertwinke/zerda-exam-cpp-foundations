@@ -17,7 +17,7 @@ protected:
 public:
   Aircraft();
   int fight();
-  void refill(int& availableAmmo);
+  void refill(unsigned int& availableAmmo);
   std::string getType();
   std::string getStatus();
   virtual ~Aircraft();
