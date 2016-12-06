@@ -8,16 +8,22 @@
 
 #include <iostream>
 #include "Aircraft.hpp"
+#include "F16.hpp"
+#include "F35.hpp"
+
 using namespace std;
 
 int main() {
   int availableAmmo = 55;
-  Aircraft p;
+  F35 p;
+
 
 
   p.refill(availableAmmo);
-  cout << p.fight();
+  cout << p.fight() << endl;
+  cout << p.getType() << endl;
+  cout << p.getStatus() << endl;
 
-//make constructor virtual and variables constant!!!
+//make variables constant!!!
 	return 0;
 }

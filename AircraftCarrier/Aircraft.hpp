@@ -11,14 +11,16 @@
 #define AIRCRAFT_HPP_
 
 class Aircraft {
-private:
+protected:
+  std::string type;
   unsigned int ammo, maxAmmo, baseDamage;
 public:
   Aircraft();
   int fight();
   void refill(int& availableAmmo);
-  //std::string getType();
-  //std::string getStatus();
+  std::string getType();
+  std::string getStatus();
+  virtual ~Aircraft();
 };
 
 
